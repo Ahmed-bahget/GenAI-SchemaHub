@@ -66,6 +66,7 @@ def select_schema(template_id, user_text):
         raise HTTPException(status_code=404, detail="Template ID not found")
     
     return schema_function(user_text)
+
 @app.post("/generate-schema")
 def generate_schema(user_input: UserInput):
     user_text = user_input.user_text
@@ -83,5 +84,5 @@ def regenerate_text(request: TextRequest):
 if __name__ == "__main__":
     import uvicorn
     import os
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)))
+    uvicorn.run(app, host="localhost", port=int(os.environ.get("PORT", 8000)))
 
